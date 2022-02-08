@@ -1,0 +1,28 @@
+<template>
+    
+    <lightning-card title="Available Products" icon-name="standard:products">
+        <div class="slds-m-around_medium">
+            <template if:true={visibleProducts}>
+                <lightning-datatable 
+                 hide-checkbox-column="true"
+                 data={visibleProducts}
+                 columns={columns}
+                 key-field="Id"                
+                 onrowaction={handleRowAction}>
+                >
+                </lightning-datatable>
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+            <div slot="footer" class="slds-var-m-vertical_medium">
+              
+                <c-kpn_pagination records={totalProducts} record-size="5" onupdate={handleUpdate}></c-kpn_pagination>
+                
+            </div>
+        </div>
+        
+    </lightning-card>
+    <c-kpn_cart-products record-id={recordId} onbuttondisable={handlebuttondisable}></c-kpn_cart-products>
+
+</template>

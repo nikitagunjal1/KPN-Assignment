@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Ordered Products" icon-name="standard:checkout"  if:true={updatedOrdrList.length}>
+        <lightning-button variant="brand" label="Confirm Order" title="Confirm Order" onclick={handleClick} disabled={buttonDisable} class="slds-align_absolute-center"></lightning-button>
+        <div class="slds-m-around_medium">
+            <lightning-datatable 
+                hide-checkbox-column="true"
+                data={updatedOrdrList} 
+                columns={columns}
+                key-field="Id"
+            >
+            </lightning-datatable>
+            <template if:true={error}>
+                {error}
+            </template>
+        </div>
+    </lightning-card>
+</template>
