@@ -151,7 +151,18 @@ export default class LightningDatatableLWCExample extends LightningElement {
                     });
                    
                     this.dispatchEvent(passEvent);
-                }})
+                }
+				else{
+                    //show toast notification                    
+                    const evtErr = new ShowToastEvent({
+                        title: 'Error',
+                        message: 'Invalid Order',
+                        variant: 'Error',
+                        mode: 'Dismissible'
+                    });
+                    this.dispatchEvent(evtErr);
+                }
+			})
             .catch(error => {
                 console.log('error1- '+JSON.stringify(error));
                 console.error(error);
